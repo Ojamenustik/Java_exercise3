@@ -1,10 +1,7 @@
 package com.ania;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -155,7 +152,17 @@ public class Main {
         people.add(new Person(3, "Clare"));
         people.add(new Person(4, "Sue"));
 
-        Collection.sort(people);
+        Collections.sort(people, new Comparator<Person>(){
+            public int compare(Person p1, Person p2){
+                if(p1.getId() > p2.getId()){
+                    return 1;
+                }
+                else if(p1.getId() < p2.getId()){
+                    return -1;
+                }
+                return 0;
+            }
+        });
 
         for(Person person : people){
             System.out.println(person);
